@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//第三方
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+//自己写的
+import App from "./App";
+import "normalize.css";
+import "./assets/css/index.less";
+import store from "./store";
+//配置别名的方法
+// @ => src
+// 问题 react脚手架隐藏了webpack配置文件
+// 解决方案 1. npm run eject
+//解决方案 2. craco => create-react-app configuration override
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    {/* <React.StrictMode> */}
+    <HashRouter>
+      <App />
+    </HashRouter>
+    {/* </React.StrictMode> */}
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
