@@ -3,12 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-
+import { ThemeProvider } from "styled-components";
 //自己写的
 import App from "./App";
 import "normalize.css";
 import "./assets/css/index.less";
+import "antd/dist/antd.less";
 import store from "./store";
+import theme from "./assets/theme";
+
 //配置别名的方法
 // @ => src
 // 问题 react脚手架隐藏了webpack配置文件
@@ -19,9 +22,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-    <HashRouter>
-      <App />
-    </HashRouter>
-    {/* </React.StrictMode> */}
+    <ThemeProvider theme={theme}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+      {/* </React.StrictMode> */}
+    </ThemeProvider>
   </Provider>
 );
