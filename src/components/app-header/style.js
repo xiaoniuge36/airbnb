@@ -1,11 +1,47 @@
+// 专门写样式，利用 styled-components 进行
+
 import styled from "styled-components";
 
-// `` 模板字符串相当于函数调用，可以传入参数
-// ${} 用来传入参数，传入参数的时候，需要用到 ${}，否则会被当做字符串处理
-// style.div 意思是创建一个 div 标签 并且给这个标签添加样式
 export const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 80px;
-  border-bottom: 1px solid #eee;
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+
+  .content {
+    position: relative;
+    z-index: 19;
+    transition: all 250ms ease;
+    border-bottom: 1px solid #eee;
+    border-bottom-color: ${(props) =>
+      props.theme.isAlpha ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)"};
+    background-color: ${(props) =>
+      props.theme.isAlpha ? "rgba(233,233,233,0)" : "rgba(255,255,255,1)"};
+    .top {
+      display: flex;
+      align-items: center;
+      height: 80px;
+    }
+    /* .search-area {
+      height: 100px;
+    } */
+  }
+
+  .cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.18);
+  }
+`;
+
+export const SearchAreaWrapper = styled.div`
+  height: ${(props) => (props.isSearch ? "100px" : "0px")};
+  transition: height 250ms ease;
 `;

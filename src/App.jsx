@@ -3,8 +3,11 @@ import { useRoutes } from "react-router-dom"; //不是结构赋值 跟原来的�
 import routes from "@/router";
 import AppHeader from "./components/app-header/index";
 import AppFooter from "./components/app-footer";
+import useScrollTop from "./hooks/useScrollTop";
 
 const App = memo(() => {
+  // 监听页面切换，只要页面切换就使其滚动到顶部
+  useScrollTop();
   return (
     <div className="app">
       <AppHeader />

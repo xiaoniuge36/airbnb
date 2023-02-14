@@ -1,11 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
+// TPK 方式写redux
 import homeReducer from "./modules/home";
+import detailReducer from "./modules/detail";
+import mainReducer from "./modules/main";
+//原始方式写redux
 import entireReducer from "./modules/entire";
 
 const store = configureStore({
   reducer: {
     home: homeReducer, //createSlice创建的reducer
     entire: entireReducer, //createReducer创建的reducer 传统方式
+    detail: detailReducer,
+    main: mainReducer,
   },
 });
 

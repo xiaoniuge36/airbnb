@@ -1,29 +1,35 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
+import IconAvatar from "src/assets/svg/icon_avatar";
+import IconGlobal from "src/assets/svg/icon_global";
+import IconMenu from "src/assets/svg/icon_menu";
 import { RightWrapper } from "./style";
-import IconGlobal from "@/assets/svg/icon_logo";
-import IconMenu from "@/assets/svg/icon_menu";
-import IconAvatar from "@/assets/svg/icon_avatar";
 
 const HeaderRight = memo(() => {
-  const [showPanel, setshowPaned] = useState(false);
+  /**
+   * 处理状态
+   */
+  const [showPanel, setShowPanel] = useState(false);
 
+  /**
+   * panel面板逻辑
+   */
   useEffect(() => {
-    //window点击事件监听，点击其他地方时，关闭下拉框 设置为false
     function windowHandleClick() {
-      // 这里的函数名字可以随便起，但是要和下面的一致
-      setshowPaned(false);
-      console.log("windowHandleClick");
+      setShowPanel(false)
     }
-    window.addEventListener("click", windowHandleClick, true); //监听点击事件设置为捕获阶段不让冒泡
-    return () => {
-      //卸载组件时，清除事件监听
-      window.removeEventListener("click", windowHandleClick, true);
-    };
-  }, []);
 
-  function profileClickHandle() {
-    setshowPaned(true);
+    window.addEventListener('click', windowHandleClick, true)
+
+    // 取消监听
+    return () => {
+      window.removeEventListener('click', windowHandleClick, true)
+    }
+  }, [])
+
+  const profileClickHandle = () => {
+    setShowPanel(true)
   }
+
   return (
     <RightWrapper>
       <div className="btns">
@@ -33,9 +39,11 @@ const HeaderRight = memo(() => {
           <IconGlobal />
         </span>
       </div>
+
       <div className="profile" onClick={profileClickHandle}>
         <IconMenu />
         <IconAvatar />
+
         {showPanel && (
           <div className="panel">
             <div className="top">

@@ -1,31 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const RightWrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
-  color: ${(props) => props.theme.text.primaryColor};
-  font-weight: 600;
+  font-size: 14px;
+  color: ${props => props.theme.textColor.primaryColor};
 
   .btns {
     display: flex;
-    box-sizing: content-box;
-    color: ${(props) =>
-      props.theme.isAlpha ? "#fff" : props.theme.text.primaryColor};
+    font-weight: 600;
+    color: ${props => props.theme.isAlpha ? "#fff" : props.theme.textColor.primaryColor};
+    box-sizing: border-box;
 
     .btn {
       height: 18px;
       line-height: 18px;
       padding: 12px 15px;
-      border-radius: 22px;
       cursor: pointer;
-      box-sizing: content-box;
-
+      border-radius: 22px;
       &:hover {
-        background-color: ${(props) =>
-          props.theme.isAlpha ? "rgba(255,255,255,.1)" : "#f5f5f5"};
+        background-color: ${props => props.theme.isAlpha ? "rgba(255,255,255,.1)" : "#f5f5f5"};
       }
     }
   }
@@ -42,39 +38,38 @@ export const RightWrapper = styled.div`
     border: 1px solid #ccc;
     border-radius: 25px;
     background-color: #fff;
-    color: ${(props) => props.theme.text.primaryColor};
     cursor: pointer;
+    color: ${props => props.theme.textColor.primaryColor};
+    /* 混入 */
 
-    ${(props) => props.theme.mixin.boxShadow};
+    ${props =>props.theme.mixin.boxShadow}
 
     .panel {
       position: absolute;
-      top: 54px;
+      top: 60px;
       right: 0;
       width: 240px;
       background-color: #fff;
       border-radius: 10px;
-      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-      color: #666;
-
-      .top,
-      .bottom {
+      box-shadow: 0 0 6px rgba(0,0,0,.18);
+      .top,.bottom {
         padding: 10px 0;
 
         .item {
           height: 40px;
           line-height: 40px;
           padding: 0 16px;
+          color: #666;
 
           &:hover {
-            background-color: #f5f5f5;
+            background-color: ${props => props.theme.bgColor.primaryColor};
           }
         }
       }
 
       .top {
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #eee;
       }
     }
   }
-`;
+`

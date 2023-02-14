@@ -18,18 +18,17 @@ export const CenterWrapper = styled.div`
     border: 1px solid #ddd;
     border-radius: 24px;
     cursor: pointer;
-    ${(props) => props.theme.mixin.boxShadow};
+    ${(props) => props.theme.mixin.boxShadow}
 
     .text {
       padding: 0 16px;
-      color: #222;
-      font-weight: 600;
+      color: ${(props) => props.theme.textColor.secondaryColor};
     }
 
     .icon {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -42,6 +41,7 @@ export const CenterWrapper = styled.div`
     position: relative;
     transform-origin: 50% 0;
     will-change: transform, opacity;
+    /* transition: all 250ms linear; */
 
     .infos {
       position: absolute;
